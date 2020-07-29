@@ -28,6 +28,32 @@ class App extends React.Component {
     return (
       <div className="app">
         <h1>Hello </h1>
+        <div className="nav">
+          <span className="logo">Travel!</span>
+          <span
+            className={
+              this.state.view === 'explore' ? 'nav-selected' : 'nav-unselected'
+            }
+          >
+            Explore
+          </span>
+          <span
+            className={
+              this.state.view === 'favorites'
+                ? 'nav-selected'
+                : 'nav-unselected'
+            }
+          >
+            ♥
+          </span>
+          <span
+            className={
+              this.state.view === 'profile' ? 'nav-selected' : 'nav-unselected'
+            }
+          >
+            Profile
+          </span>
+        </div>
       </div>
     );
   }
