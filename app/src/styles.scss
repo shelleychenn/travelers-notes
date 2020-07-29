@@ -1,4 +1,12 @@
 $primary-color: black;
+
+@mixin nav-options-button {
+  padding: 5px;
+  margin-right: 5px;
+  font-size: 1.1em;
+  cursor: pointer;
+}
+
 h1 {
   color: $primary-color;
 }
@@ -16,18 +24,15 @@ h1 {
   margin-left: 10px;
   font-weight: bold;
   font-size: 1.4em;
+  cursor: pointer;
 }
 
 .nav-selected {
+  @include nav-options-button();
   color: white;
-  padding: 5px;
-  margin-right: 5px;
-  font-size: 1.1em;
   font-weight: bold;
 }
 
 .nav-unselected {
-  padding: 5px;
-  margin-right: 5px;
-  font-size: 1.1em;
+  @include nav-options-button();
 }

@@ -10,6 +10,13 @@ class App extends React.Component {
     this.state = {
       view: 'explore',
     };
+    this.changeView = this.changeView.bind(this);
+  }
+
+  changeView(option) {
+    this.setState({
+      view: option,
+    });
   }
 
   renderView() {
@@ -29,11 +36,21 @@ class App extends React.Component {
       <div className="app">
         <h1>Hello </h1>
         <div className="nav">
-          <span className="logo">Travel!</span>
+          <span
+            className="logo"
+            onClick={() => {
+              this.changeView('explore');
+            }}
+          >
+            Travel!
+          </span>
           <span
             className={
               this.state.view === 'explore' ? 'nav-selected' : 'nav-unselected'
             }
+            onClick={() => {
+              this.changeView('explore');
+            }}
           >
             Explore
           </span>
@@ -43,6 +60,9 @@ class App extends React.Component {
                 ? 'nav-selected'
                 : 'nav-unselected'
             }
+            onClick={() => {
+              this.changeView('favorites');
+            }}
           >
             ♥
           </span>
@@ -50,6 +70,9 @@ class App extends React.Component {
             className={
               this.state.view === 'profile' ? 'nav-selected' : 'nav-unselected'
             }
+            onClick={() => {
+              this.changeView('profile');
+            }}
           >
             Profile
           </span>
