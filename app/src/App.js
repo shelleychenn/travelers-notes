@@ -34,7 +34,6 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <h1>Hello </h1>
         <div className="nav">
           <span
             className="logo"
@@ -77,6 +76,7 @@ class App extends React.Component {
             Profile
           </span>
         </div>
+        <div className="main">{this.renderView()}</div>
       </div>
     );
   }
