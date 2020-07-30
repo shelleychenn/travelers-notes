@@ -1,7 +1,7 @@
 import React from 'react';
 import Attraction from './Attraction';
 
-const AttractionList = ({ attractions }) => {
+const AttractionList = ({ attractions, getReviews }) => {
   let locationOverview;
   if (
     attractions &&
@@ -41,7 +41,11 @@ const AttractionList = ({ attractions }) => {
       <div className="attraction-item-location">{locationOverview}</div>
       <div className="attraction-list">
         {attractions.slice(1).map((attraction, index) => (
-          <Attraction attraction={attraction} key={index} />
+          <Attraction
+            attraction={attraction}
+            key={index}
+            getReviews={getReviews}
+          />
         ))}
       </div>
     </>

@@ -2,18 +2,23 @@ import React from 'react';
 
 const Review = ({ review }) => {
   return (
-    <div className="review">
-      <div>rating: {review.rating}</div>
-      <div>travel date: {review.travel_date}</div>
-      <div>username: {review.user.username}</div>
-      <div>
-        <img src={review.user.avatar.small.url}></img>
+    <div className="review-container">
+      <div className="reviewer-info">
+        <div>
+          <img src={review.user.avatar.small.url}></img>
+        </div>
+        <div>
+          {review.user.username}, {review.published_date.slice(0, 10)}
+        </div>
       </div>
+      <div className="review">
+        <div>Rating: {review.rating}</div>
+        <div>Travel date: {review.travel_date}</div>
+        <div>Summary: {review.title}</div>
+        <div>Review: {review.text}</div>
 
-      <div>summary: {review.title}</div>
-      <div>review: {review.text}</div>
-      <div>date: {review.published_date}</div>
-      <br />
+        <br />
+      </div>
     </div>
   );
 };

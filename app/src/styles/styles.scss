@@ -57,6 +57,7 @@
   padding: 10px;
   border-radius: 7px;
   border: 1px solid #00000061;
+  cursor: pointer;
 }
 
 .attraction-item-location {
@@ -111,14 +112,20 @@
 .explore-page-nav {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 2%;
 }
 
 .review {
   margin-left: 9%;
   margin-right: 9%;
-  margin-top: 4.5%;
+  margin-top: 0.2%;
   margin-bottom: 4.5%;
   padding: 10px;
   border-radius: 7px;
   border: 1px solid #00000061;
+}
+
+.reviewer-info {
+  text-align: right;
+  width: 90%;
 }

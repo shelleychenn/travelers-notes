@@ -54,7 +54,7 @@ class Explore extends React.Component {
 
   getReviews(locationId) {
     axios
-      .get(`http://localhost:3000/location/reviews/304289`)
+      .get(`http://localhost:3000/location/reviews/${locationId}`)
       .then((response) => {
         if (response.data[0].reviews) {
           console.log('fetched from db', response.data[0].reviews);
@@ -79,7 +79,12 @@ class Explore extends React.Component {
     let listToRender;
 
     if (this.state.view === 'default') {
-      listToRender = <AttractionList attractions={this.state.attractions} />;
+      listToRender = (
+        <AttractionList
+          attractions={this.state.attractions}
+          getReviews={this.getReviews}
+        />
+      );
     } else if (this.state.view === 'reviews') {
       listToRender = <ReviewList reviews={this.state.reviews} />;
     }

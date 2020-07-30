@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Attraction = ({ attraction }) => {
+const Attraction = ({ attraction, getReviews }) => {
   let review_snippet =
     attraction && attraction.review_snippet
       ? attraction.review_snippet.snippet
@@ -10,7 +10,12 @@ const Attraction = ({ attraction }) => {
     return null;
   } else if (attraction.result_type !== 'geos' && attraction.result_object) {
     return (
-      <div className="attraction-item">
+      <div
+        className="attraction-item"
+        onClick={() => {
+          getReviews(attraction.result_object.location_id);
+        }}
+      >
         <div className="attraction-name">{attraction.result_object.name}</div>
         <div>
           <img
