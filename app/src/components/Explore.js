@@ -4,15 +4,20 @@ import axios from 'axios';
 class Explore extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      attractions: [],
+    };
     this.searchLocation = this.searchLocation.bind(this);
   }
 
   searchLocation() {
     axios
       .get('http://localhost:3000/location')
-      .then((data) => {
-        console.log(data);
+      .then((response) => {
+        console.log(response.data);
+        this.setState({
+          attractions: response.data,
+        });
       })
       .catch((err) => {
         console.log(err);
@@ -23,7 +28,7 @@ class Explore extends React.Component {
     return (
       <>
         Explore Page
-        <button>search</button>
+        <button onClick={this.searchLocation}>search</button>
       </>
     );
   }
