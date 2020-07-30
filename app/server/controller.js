@@ -80,7 +80,7 @@ module.exports = {
             .get(url)
             .then((response) => {
               let reviews = response.data.data;
-              console.log('reviews: ', reviews);
+
               let returnedReviews = new ReviewEntry({
                 search_type: 'reviews',
                 location_id: locationId,

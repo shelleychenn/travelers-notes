@@ -2,16 +2,20 @@ import React from 'react';
 import axios from 'axios';
 import AttractionList from './AttractionList';
 import SearchBar from './SearchBar';
+import ReviewList from './ReviewList';
 
 class Explore extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      view: 'default',
       location: 'london',
       attractions: [],
+      reviews: [],
     };
     this.searchLocation = this.searchLocation.bind(this);
     this.changeLocation = this.changeLocation.bind(this);
+    this.getReviews = this.getReviews.bind(this);
   }
 
   componentDidMount() {
@@ -48,13 +52,48 @@ class Explore extends React.Component {
     );
   }
 
+  getReviews(locationId) {
+    axios
+      .get(`http://localhost:3000/location/reviews/304289`)
+      .then((response) => {
+        if (response.data[0].reviews) {
+          console.log('fetched from db');
+          this.setState({
+            view: 'reviews',
+            reviews: response.data[0].reviews,
+          });
+        } else {
+          console.log('fetched from API');
+          this.setState({
+            view: 'reviews',
+            reviews: response.data,
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   render() {
+    let listToRender;
+
+    if (this.state.view === 'default') {
+      listToRender = <AttractionList attractions={this.state.attractions} />;
+    } else if (this.state.view === 'reviews') {
+      listToRender = <ReviewList reviews={this.state.reviews} />;
+    }
+
     return (
       <>
-        <div className="search-bar">
-          <SearchBar changeLocation={this.changeLocation} />
+        <div className="explore-page-nav">
+          <div>↵</div>
+          <div className="search-bar">
+            <SearchBar changeLocation={this.changeLocation} />
+          </div>
         </div>
-        <AttractionList attractions={this.state.attractions} />
+        <div className="explore-view-container">{listToRender}</div>
+        <button onClick={this.getReviews}>Reviews</button>
       </>
     );
   }
