@@ -4,7 +4,7 @@ const AttractionEntry = require('../db/Attraction');
 
 module.exports = {
   saveAndSendReturnedAttraction: (req, res) => {
-    let location = req.body.location || 'montreal';
+    let location = req.body.location || 'tokyo';
     AttractionEntry.find({ search_key: location })
       .count()
       .then((count) => {

@@ -63,7 +63,7 @@ class App extends React.Component {
               this.changeView('favorites');
             }}
           >
-            ♥
+            🔖
           </span>
           <span
             className={
