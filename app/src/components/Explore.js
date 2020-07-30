@@ -7,7 +7,7 @@ class Explore extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      location: '',
+      location: 'london',
       attractions: [],
     };
     this.searchLocation = this.searchLocation.bind(this);
@@ -20,19 +20,18 @@ class Explore extends React.Component {
 
   searchLocation() {
     axios
-      .get('http://localhost:3000/location', { location: this.state.location })
+      .get(`http://localhost:3000/location/${this.state.location}`)
       .then((response) => {
-        let dataEntries;
         if (response.data.length < 10) {
-          dataEntries = response.data[0].attractions;
-          console.log(dataEntries);
+          this.setState({
+            attractions: response.data[0].attractions,
+          });
         } else {
-          dataEntries = response.data;
-          console.log(dataEntries);
+          this.setState({
+            attractions: response.data,
+          });
         }
-        this.setState({
-          attractions: dataEntries,
-        });
+        console.log('5', this.state.attractions);
       })
       .catch((err) => {
         console.log(err);
