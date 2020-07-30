@@ -32,6 +32,7 @@ class ItineraryEntryForm extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <div>
             <input
+              className="itinerary-form-input"
               type="date"
               name="date"
               value={this.state.date}

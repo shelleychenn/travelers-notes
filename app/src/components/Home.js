@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import ItineraryEntryForm from './ItineraryEntryForm';
+import Itinerary from './Itinerary';
 
 class Home extends React.Component {
   constructor(props) {
@@ -20,10 +21,9 @@ class Home extends React.Component {
     axios
       .get('http://localhost:3000/itinerary')
       .then(({ data }) => {
-        console.log('here', data);
-        // this.setState({
-        //   itineraryEntries: response.data,
-        // });
+        this.setState({
+          itineraryEntries: data,
+        });
       })
       .catch((err) => {
         console.log(err);
@@ -55,6 +55,7 @@ class Home extends React.Component {
         Home Page
         <button onClick={this.getSavedEntries}>get saved entries</button>
         <ItineraryEntryForm submitNewItinerary={this.submitNewItinerary} />
+        <Itinerary itineraryEntries={this.state.itineraryEntries} />
       </>
     );
   }
