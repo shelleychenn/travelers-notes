@@ -14,9 +14,16 @@ class Explore extends React.Component {
     axios
       .get('http://localhost:3000/location')
       .then((response) => {
-        console.log(response.data);
+        let dataEntries;
+        if (response.data.length === 1) {
+          dataEntries = response.data[0].attractions;
+          console.log(dataEntries);
+        } else {
+          dataEntries = response.data;
+          console.log(dataEntries);
+        }
         this.setState({
-          attractions: response.data,
+          attractions: dataEntries,
         });
       })
       .catch((err) => {
