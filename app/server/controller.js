@@ -2,6 +2,7 @@ const axios = require('axios');
 const { API_KEY } = require('./api_key');
 const AttractionEntry = require('../db/Attraction');
 const ReviewEntry = require('../db/Review');
+const ItineraryEntry = require('../db/Itinerary');
 
 module.exports = {
   saveAndSendReturnedAttraction: (req, res) => {
@@ -103,6 +104,52 @@ module.exports = {
               res.sendStatus(500);
             });
         }
+      });
+  },
+
+  addItinerary: (req, res) => {
+    let newEntry = new ItineraryEntry({
+      date: req.body.date,
+      time: req.body.time,
+      activity: req.body.activity,
+      location: req.body.location,
+      budget: req.body.budget,
+      notes: req.body.notes,
+    });
+
+    newEntry
+      .save()
+      .then(() => {
+        console.log('itinerary entry saved successfully!');
+        res.sendStatus(200);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.sendStatus(500);
+      });
+  },
+
+  getAllItinerary: (req, res) => {
+    ItineraryEntry.find()
+      .then((data) => {
+        res.status(200).send(data);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.sendStatus(500);
+      });
+  },
+
+  deleteItinerary: (req, res) => {
+    let itemId = req.params.id;
+    ItineraryEntry.deleteOne({ _id: itemId })
+      .then(() => {
+        console.log('entry successfully deleted!');
+        res.sendStatus(200);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.sendStatus(500);
       });
   },
 };
