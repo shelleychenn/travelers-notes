@@ -55,7 +55,7 @@ class Home extends React.Component {
         <div className="home-container-itinerary">
           <Itinerary itineraryEntries={this.state.itineraryEntries} />
         </div>
-        <div className="home-containe-form">
+        <div className="home-container-form">
           <ItineraryEntryForm submitNewItinerary={this.submitNewItinerary} />
         </div>
       </div>
