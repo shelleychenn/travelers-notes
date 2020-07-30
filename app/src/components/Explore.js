@@ -57,13 +57,13 @@ class Explore extends React.Component {
       .get(`http://localhost:3000/location/reviews/304289`)
       .then((response) => {
         if (response.data[0].reviews) {
-          console.log('fetched from db');
+          console.log('fetched from db', response.data[0].reviews);
           this.setState({
             view: 'reviews',
             reviews: response.data[0].reviews,
           });
         } else {
-          console.log('fetched from API');
+          console.log('fetched from API', response.data);
           this.setState({
             view: 'reviews',
             reviews: response.data,

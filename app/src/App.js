@@ -44,7 +44,7 @@ class App extends React.Component {
               this.changeView('home');
             }}
           >
-            Travel!
+            Travel Planner
           </span>
           <span
             className={
