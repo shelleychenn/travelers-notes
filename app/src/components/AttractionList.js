@@ -27,8 +27,9 @@ const AttractionList = ({ attractions }) => {
             ></img>
           </div>
         </div>
-        <div>{attractions[0].result_object.num_reviews}</div>
-        <div>{attractions[0].result_object.geo_description}</div>
+        <div className="location-geo-description">
+          {attractions[0].result_object.geo_description}
+        </div>
       </div>
     );
   } else {

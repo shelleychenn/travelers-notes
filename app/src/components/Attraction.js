@@ -19,14 +19,14 @@ const Attraction = ({ attraction }) => {
           ></img>
         </div>
         <div>{attraction.result_object.location_string}</div>
-        <div>{attraction.result_object.num_reviews}</div>
+        <div>total reviews: {attraction.result_object.num_reviews}</div>
         <div className="attraction-caption">
           {attraction.result_object.caption}
         </div>
         <div>{attraction.result_object.photo.uploaded_date}</div>
-        <div>{attraction.result_object.address}</div>
-        <div>{review_snippet}</div>
-        <div>{attraction.result_type}</div>
+        <div>address: {attraction.result_object.address}</div>
+        <div>review: {review_snippet}</div>
+        <div>type: {attraction.result_type}</div>
       </div>
     );
   } else {
