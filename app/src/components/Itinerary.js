@@ -1,7 +1,7 @@
 import React from 'react';
 import ItineraryEntry from './ItineraryEntry';
 
-const Itinerary = ({ itineraryEntries }) => {
+const Itinerary = ({ itineraryEntries, deleteItineraryEntry }) => {
   return (
     <div className="itinerary">
       <table className="itinerary-table">
@@ -17,7 +17,13 @@ const Itinerary = ({ itineraryEntries }) => {
         </thead>
         <tbody>
           {itineraryEntries.map((itineraryEntry, index) => (
-            <ItineraryEntry itineraryEntry={itineraryEntry} key={index} />
+            <>
+              <ItineraryEntry
+                itineraryEntry={itineraryEntry}
+                key={index}
+                deleteItineraryEntry={deleteItineraryEntry}
+              />
+            </>
           ))}
         </tbody>
       </table>

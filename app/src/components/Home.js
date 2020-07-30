@@ -11,6 +11,7 @@ class Home extends React.Component {
     };
     this.getSavedEntries = this.getSavedEntries.bind(this);
     this.submitNewItinerary = this.submitNewItinerary.bind(this);
+    this.deleteItineraryEntry = this.deleteItineraryEntry.bind(this);
   }
 
   componentDidMount() {
@@ -41,7 +42,19 @@ class Home extends React.Component {
         notes: entry.notes,
       })
       .then(() => {
-        console.log('new entry submitted successfully!');
+        console.log('new entry submitted!');
+        this.getSavedEntries();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  deleteItineraryEntry(id) {
+    axios
+      .delete(`http://localhost:3000/itinerary/${id}`)
+      .then(() => {
+        console.log('entry deleted!');
         this.getSavedEntries();
       })
       .catch((err) => {
@@ -52,11 +65,14 @@ class Home extends React.Component {
   render() {
     return (
       <div className="home-container">
-        <div className="home-container-itinerary">
-          <Itinerary itineraryEntries={this.state.itineraryEntries} />
-        </div>
         <div className="home-container-form">
           <ItineraryEntryForm submitNewItinerary={this.submitNewItinerary} />
+        </div>
+        <div className="home-container-itinerary">
+          <Itinerary
+            itineraryEntries={this.state.itineraryEntries}
+            deleteItineraryEntry={this.deleteItineraryEntry}
+          />
         </div>
       </div>
     );

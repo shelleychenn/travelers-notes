@@ -24,6 +24,14 @@ class ItineraryEntryForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.submitNewItinerary(this.state);
+    this.setState({
+      date: '',
+      time: '',
+      activity: '',
+      location: '',
+      budget: '',
+      notes: '',
+    });
   }
 
   render() {
@@ -37,7 +45,6 @@ class ItineraryEntryForm extends React.Component {
               name="date"
               value={this.state.date}
               onChange={this.handleChange}
-              placeholder="08/01/2020"
               required
             />
           </div>
@@ -47,7 +54,7 @@ class ItineraryEntryForm extends React.Component {
             name="time"
             value={this.state.time}
             onChange={this.handleChange}
-            placeholder="3:00pm"
+            placeholder="time"
           ></input>
           <input
             className="itinerary-form-input"
@@ -55,7 +62,7 @@ class ItineraryEntryForm extends React.Component {
             name="activity"
             value={this.state.activity}
             onChange={this.handleChange}
-            placeholder="Departing Flight"
+            placeholder="activity"
             required
           ></input>
           <input
@@ -64,7 +71,7 @@ class ItineraryEntryForm extends React.Component {
             name="location"
             value={this.state.location}
             onChange={this.handleChange}
-            placeholder="JFK, Terminal 1"
+            placeholder="location"
             required
           ></input>
 
@@ -74,7 +81,7 @@ class ItineraryEntryForm extends React.Component {
             name="budget"
             value={this.state.budget}
             onChange={this.handleChange}
-            placeholder="Amount $"
+            placeholder="budget"
           ></input>
 
           <textarea
@@ -86,7 +93,7 @@ class ItineraryEntryForm extends React.Component {
             onChange={this.handleChange}
           ></textarea>
           <button className="button" type="submit" value="Submit">
-            Add Itinerary
+            Add Itinerary ＋
           </button>
         </form>
       </div>
