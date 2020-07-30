@@ -109,7 +109,6 @@ class Explore extends React.Component {
           </div>
         </div>
         <div className="explore-view-container">{listToRender}</div>
-        <button onClick={this.getReviews}>Reviews</button>
       </>
     );
   }

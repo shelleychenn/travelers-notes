@@ -132,7 +132,7 @@ module.exports = {
   getAllItinerary: (req, res) => {
     ItineraryEntry.find()
       .then((data) => {
-        res.status(200).send(data);
+        res.status(200).json(data);
       })
       .catch((err) => {
         console.log(err);
