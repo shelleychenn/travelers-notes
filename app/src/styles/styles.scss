@@ -11,6 +11,13 @@
   object-fit: cover;
 }
 
+@mixin input-search-field {
+  border: 1px solid #000;
+  padding: 8px 8px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
 .nav {
   background-color: #96c8eac9;
   padding: 10px;
@@ -84,4 +91,14 @@
   width: 75%;
   display: block;
   margin: auto;
+}
+
+.search-button {
+  @include input-search-field();
+  display: inline-block;
+  background-color: #fff;
+}
+
+.search-input-box {
+  @include input-search-field();
 }

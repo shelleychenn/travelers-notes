@@ -40,16 +40,22 @@ class Explore extends React.Component {
   }
 
   changeLocation(location) {
-    this.setState({
-      location: location,
-    });
-    this.searchLocation();
+    this.setState(
+      {
+        location: location,
+      },
+      () => {
+        this.searchLocation();
+      }
+    );
   }
 
   render() {
     return (
       <>
-        <SearchBar changeLocation={this.changeLocation} />
+        <div className="search-bar">
+          <SearchBar changeLocation={this.changeLocation} />
+        </div>
         <AttractionList attractions={this.state.attractions} />
         <button onClick={this.searchLocation}>search</button>
       </>

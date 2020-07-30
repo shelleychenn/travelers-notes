@@ -27,13 +27,14 @@ class SearchBar extends React.Component {
         <label>
           Location:
           <input
+            className="search-input-box"
             type="text"
             value={this.state.location}
             onChange={this.handleChange}
             placeholder="santorini"
           />
         </label>
-        <input type="submit" value="Submit" />
+        <input className="search-button" type="submit" value="Submit" />
       </form>
     );
   }
