@@ -10,7 +10,7 @@ const AttractionList = ({ attractions }) => {
     attractions[0].is_top_result === true
   ) {
     locationOverview = (
-      <div>
+      <div className="attraction-geo-info">
         <div className="attraction-name">
           {attractions[0].result_object.name}
         </div>
@@ -35,7 +35,7 @@ const AttractionList = ({ attractions }) => {
   } else {
     locationOverview = null;
   }
-  console.log('here', attractions);
+
   return (
     <>
       <div className="attraction-item-location">{locationOverview}</div>
