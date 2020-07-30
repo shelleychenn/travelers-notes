@@ -110,8 +110,6 @@
 }
 
 .explore-page-nav {
-  display: flex;
-  justify-content: space-between;
   margin-bottom: 2%;
 }
 
@@ -128,4 +126,10 @@
 .reviewer-info {
   text-align: right;
   width: 90%;
+}
+
+.revert-button {
+  margin-left: 9%;
+  margin-bottom: -19px;
+  cursor: pointer;
 }

@@ -16,6 +16,7 @@ class Explore extends React.Component {
     this.searchLocation = this.searchLocation.bind(this);
     this.changeLocation = this.changeLocation.bind(this);
     this.getReviews = this.getReviews.bind(this);
+    this.returnToAttractionPage = this.returnToAttractionPage.bind(this);
   }
 
   componentDidMount() {
@@ -75,6 +76,12 @@ class Explore extends React.Component {
       });
   }
 
+  returnToAttractionPage() {
+    this.setState({
+      view: 'default',
+    });
+  }
+
   render() {
     let listToRender;
 
@@ -86,13 +93,17 @@ class Explore extends React.Component {
         />
       );
     } else if (this.state.view === 'reviews') {
-      listToRender = <ReviewList reviews={this.state.reviews} />;
+      listToRender = (
+        <ReviewList
+          reviews={this.state.reviews}
+          returnToAttractionPage={this.returnToAttractionPage}
+        />
+      );
     }
 
     return (
       <>
         <div className="explore-page-nav">
-          <div>↵</div>
           <div className="search-bar">
             <SearchBar changeLocation={this.changeLocation} />
           </div>
