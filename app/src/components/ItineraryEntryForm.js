@@ -78,7 +78,7 @@ class ItineraryEntryForm extends React.Component {
           ></input>
 
           <textarea
-            className="itinerary-form-textarea"
+            className="itinerary-form-input"
             type="text"
             placeholder="notes"
             name="notes"

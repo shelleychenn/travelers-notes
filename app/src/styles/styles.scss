@@ -144,3 +144,16 @@
   border-color: #8080806e;
   border-radius: 4px;
 }
+
+.home-container {
+  display: grid;
+  grid-template-columns: 70% 30%;
+}
+
+.home-container-itinerary {
+  padding: 3% 4%;
+}
+
+.home-container-form {
+  padding: 3% 4%;
+}

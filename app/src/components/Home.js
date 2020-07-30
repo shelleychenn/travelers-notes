@@ -51,12 +51,14 @@ class Home extends React.Component {
 
   render() {
     return (
-      <>
-        Home Page
-        <button onClick={this.getSavedEntries}>get saved entries</button>
-        <ItineraryEntryForm submitNewItinerary={this.submitNewItinerary} />
-        <Itinerary itineraryEntries={this.state.itineraryEntries} />
-      </>
+      <div className="home-container">
+        <div className="home-container-itinerary">
+          <Itinerary itineraryEntries={this.state.itineraryEntries} />
+        </div>
+        <div className="home-containe-form">
+          <ItineraryEntryForm submitNewItinerary={this.submitNewItinerary} />
+        </div>
+      </div>
     );
   }
 }
