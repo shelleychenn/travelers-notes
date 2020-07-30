@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import AttractionList from './AttractionList';
 
 class Explore extends React.Component {
   constructor(props) {
@@ -35,6 +36,7 @@ class Explore extends React.Component {
     return (
       <>
         Explore Page
+        <AttractionList attractions={this.state.attractions} />
         <button onClick={this.searchLocation}>search</button>
       </>
     );

@@ -30,3 +30,23 @@
 .nav-unselected {
   @include nav-options-button();
 }
+
+.attraction-list {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  margin-left: 0.8%;
+}
+
+.attraction-item {
+  margin: 15px;
+  padding: 10px;
+  border-style: solid;
+  border-width: 1.5px;
+  border-color: grey;
+  border-radius: 8px;
+}
+
+.attraction-item-location {
+  display: flex;
+  justify-content: center;
+}
