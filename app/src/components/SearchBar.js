@@ -31,7 +31,7 @@ class SearchBar extends React.Component {
             type="text"
             value={this.state.location}
             onChange={this.handleChange}
-            placeholder="santorini"
+            placeholder="london"
           />
         </label>
         <input className="search-button" type="submit" value="Submit" />

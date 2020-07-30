@@ -2,7 +2,8 @@ import React from 'react';
 import { hot } from 'react-hot-loader/root';
 import Explore from './components/Explore';
 import Favorites from './components/Favorites';
-import Profile from './components/Profile';
+import Home from './components/Home';
+import Friends from './components/Friends';
 
 class App extends React.Component {
   constructor(props) {
@@ -22,12 +23,14 @@ class App extends React.Component {
   renderView() {
     const { view } = this.state;
 
-    if (view === 'explore') {
+    if (view === 'home') {
+      return <Home />;
+    } else if (view === 'explore') {
       return <Explore />;
     } else if (view === 'favorites') {
       return <Favorites />;
-    } else if (view === 'profile') {
-      return <Profile />;
+    } else if (view === 'friends') {
+      return <Friends />;
     }
   }
 
@@ -38,10 +41,20 @@ class App extends React.Component {
           <span
             className="logo"
             onClick={() => {
-              this.changeView('explore');
+              this.changeView('home');
             }}
           >
             Travel!
+          </span>
+          <span
+            className={
+              this.state.view === 'home' ? 'nav-selected' : 'nav-unselected'
+            }
+            onClick={() => {
+              this.changeView('home');
+            }}
+          >
+            Home
           </span>
           <span
             className={
@@ -67,13 +80,13 @@ class App extends React.Component {
           </span>
           <span
             className={
-              this.state.view === 'profile' ? 'nav-selected' : 'nav-unselected'
+              this.state.view === 'friends' ? 'nav-selected' : 'nav-unselected'
             }
             onClick={() => {
-              this.changeView('profile');
+              this.changeView('friends');
             }}
           >
-            Profile
+            Friends
           </span>
         </div>
         <div className="main">{this.renderView()}</div>
