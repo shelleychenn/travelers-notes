@@ -1,6 +1,7 @@
 const axios = require('axios');
 const { API_KEY } = require('./api_key');
 const AttractionEntry = require('../db/Attraction');
+const ReviewEntry = require('../db/Review');
 
 module.exports = {
   saveAndSendReturnedAttraction: (req, res) => {
@@ -36,6 +37,61 @@ module.exports = {
                 .then(() => {
                   console.log('data saved successfully!');
                   res.status(200).json(attractions);
+                })
+                .catch((err) => {
+                  console.log(err);
+                  res.sendStatus(500);
+                });
+            })
+            .catch((err) => {
+              console.log(err);
+              res.sendStatus(500);
+            });
+        }
+      });
+  },
+
+  loadMoreReviews: (req, res) => {
+    let locationId = req.params.location_id;
+
+    ReviewEntry.find({
+      search_type: 'reviews',
+      location_id: locationId,
+    })
+      .count()
+      .then((count) => {
+        if (count !== 0) {
+          ReviewEntry.find({
+            search_type: 'reviews',
+            location_id: locationId,
+          })
+            .then((data) => {
+              console.log('data found in database!');
+              res.status(200).json(data);
+            })
+            .catch((err) => {
+              console.log(err);
+              res.sendStatus(500);
+            });
+        } else {
+          let url = `https://tripadvisor1.p.rapidapi.com/reviews/list?rapidapi-key=${API_KEY}&limit=20&currency=USD&lang=en_US&location_id=${locationId}`;
+
+          axios
+            .get(url)
+            .then((response) => {
+              let reviews = response.data.data;
+              console.log('reviews: ', reviews);
+              let returnedReviews = new ReviewEntry({
+                search_type: 'reviews',
+                location_id: locationId,
+                reviews: reviews,
+              });
+
+              returnedReviews
+                .save()
+                .then(() => {
+                  console.log('data saved successfully!');
+                  res.status(200).json(reviews);
                 })
                 .catch((err) => {
                   console.log(err);
