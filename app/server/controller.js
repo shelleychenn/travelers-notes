@@ -4,9 +4,8 @@ const AttractionEntry = require('../db/Attraction');
 
 module.exports = {
   saveAndSendReturnedAttraction: (req, res) => {
-    console.log('6', req.params);
     let location = req.params.location_key_word;
-    // || 'santorini';
+
     AttractionEntry.find({ search_key: location })
       .count()
       .then((count) => {

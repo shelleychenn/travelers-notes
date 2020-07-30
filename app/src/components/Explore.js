@@ -31,7 +31,6 @@ class Explore extends React.Component {
             attractions: response.data,
           });
         }
-        console.log('5', this.state.attractions);
       })
       .catch((err) => {
         console.log(err);
@@ -56,7 +55,6 @@ class Explore extends React.Component {
           <SearchBar changeLocation={this.changeLocation} />
         </div>
         <AttractionList attractions={this.state.attractions} />
-        <button onClick={this.searchLocation}>search</button>
       </>
     );
   }
