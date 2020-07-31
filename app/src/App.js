@@ -9,7 +9,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: 'explore',
+      view: 'home',
     };
     this.changeView = this.changeView.bind(this);
   }
@@ -44,7 +44,7 @@ class App extends React.Component {
               this.changeView('home');
             }}
           >
-            Travel Planner
+            Travel Planner ✈
           </span>
           <span
             className={
@@ -76,7 +76,7 @@ class App extends React.Component {
               this.changeView('favorites');
             }}
           >
-            🔖
+            📌
           </span>
           <span
             className={

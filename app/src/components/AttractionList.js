@@ -11,7 +11,7 @@ const AttractionList = ({ attractions, getReviews }) => {
   ) {
     locationOverview = (
       <div className="attraction-geo-info">
-        <div className="attraction-name">
+        <div className="attraction-description-name">
           {attractions[0].result_object.name}
         </div>
         <div className="location-images">

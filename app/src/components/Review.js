@@ -7,9 +7,8 @@ const Review = ({ review }) => {
         <div>
           <img src={review.user.avatar.small.url}></img>
         </div>
-        <div>
-          {review.user.username}, {review.published_date.slice(0, 10)}
-        </div>
+        <div>{review.user.username}</div>
+        <div>{review.published_date.slice(0, 10)}</div>
       </div>
       <div className="review">
         <div>Rating: {review.rating}</div>

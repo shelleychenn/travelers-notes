@@ -3,6 +3,7 @@ const { API_KEY } = require('./api_key');
 const AttractionEntry = require('../db/Attraction');
 const ReviewEntry = require('../db/Review');
 const ItineraryEntry = require('../db/Itinerary');
+const FavoriteEntry = require('../db/Favorite');
 
 module.exports = {
   saveAndSendReturnedAttraction: (req, res) => {
@@ -14,7 +15,6 @@ module.exports = {
         if (count !== 0) {
           AttractionEntry.find({ search_key: location })
             .then((data) => {
-              console.log('data found in database!');
               res.status(200).json(data);
             })
             .catch((err) => {
@@ -36,7 +36,6 @@ module.exports = {
               returnedAttractions
                 .save()
                 .then(() => {
-                  console.log('data saved successfully!');
                   res.status(200).json(attractions);
                 })
                 .catch((err) => {
@@ -67,7 +66,6 @@ module.exports = {
             location_id: locationId,
           })
             .then((data) => {
-              console.log('data found in database!');
               res.status(200).json(data);
             })
             .catch((err) => {
@@ -91,7 +89,6 @@ module.exports = {
               returnedReviews
                 .save()
                 .then(() => {
-                  console.log('data saved successfully!');
                   res.status(200).json(reviews);
                 })
                 .catch((err) => {
@@ -120,7 +117,6 @@ module.exports = {
     newEntry
       .save()
       .then(() => {
-        console.log('itinerary entry saved successfully!');
         res.sendStatus(200);
       })
       .catch((err) => {
@@ -132,7 +128,7 @@ module.exports = {
   getAllItinerary: (req, res) => {
     ItineraryEntry.find()
       .then((data) => {
-        res.status(200).send(data);
+        res.status(200).json(data);
       })
       .catch((err) => {
         console.log(err);
@@ -144,7 +140,49 @@ module.exports = {
     let itemId = req.params.id;
     ItineraryEntry.deleteOne({ _id: itemId })
       .then(() => {
-        console.log('entry successfully deleted!');
+        res.sendStatus(200);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.sendStatus(500);
+      });
+  },
+
+  addToFavorites: (req, res) => {
+    let newFavoriteEntry = new FavoriteEntry({
+      name: req.body.name,
+      image_url: req.body.image_url,
+      location: req.body.location,
+      num_of_reviews: req.body.num_of_reviews,
+      address: req.body.address,
+    });
+
+    newFavoriteEntry
+      .save()
+      .then(() => {
+        res.sendStatus(200);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.sendStatus(500);
+      });
+  },
+
+  getAllFavorites: (req, res) => {
+    FavoriteEntry.find()
+      .then((data) => {
+        res.status(200).json(data);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.sendStatus(500);
+      });
+  },
+
+  deleteFavorites: (req, res) => {
+    let itemId = req.params.id;
+    FavoriteEntry.deleteOne({ _id: itemId })
+      .then(() => {
         res.sendStatus(200);
       })
       .catch((err) => {
