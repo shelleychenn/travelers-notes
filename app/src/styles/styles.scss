@@ -71,8 +71,10 @@
 
 .location-images {
   display: flex;
-  width: 100%;
   justify-content: space-around;
+  width: 60%;
+  text-align: center;
+  margin-left: 20%;
 }
 
 .attraction-image {
@@ -237,13 +239,12 @@ td {
 
 // styling for favorite list page
 .favorites-list-item {
-  width: 65%;
   display: grid;
   grid-template-columns: 20% 78% 2%;
   padding: 10px;
   border-radius: 7px;
   border: 1px solid #00000061;
-  margin-bottom: 1.3%;
+  margin-bottom: 1.5%;
 }
 
 .favorites-list-item-image {
@@ -260,4 +261,29 @@ td {
 
 .favorites-list-item-delete-button {
   cursor: pointer;
+}
+
+.favorites-container {
+  display: flex;
+  justify-content: center;
+}
+
+.favorites-title {
+  display: flex;
+  justify-content: center;
+  font-size: 1.4em;
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+.home-container-title {
+  display: flex;
+  justify-content: center;
+  font-size: 2em;
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+.home-container-title-linebreak {
+  width: 70%;
 }

@@ -20,7 +20,6 @@ class Favorites extends React.Component {
     axios
       .get('http://localhost:3000/favorites')
       .then(({ data }) => {
-        console.log('fave list data:', data);
         this.setState({
           favoritesList: data,
         });
@@ -34,7 +33,6 @@ class Favorites extends React.Component {
     axios
       .delete(`http://localhost:3000/favorites/${id}`)
       .then(() => {
-        console.log('entry deleted!');
         this.getAllFavorites();
       })
       .catch((err) => {
@@ -43,14 +41,18 @@ class Favorites extends React.Component {
   }
 
   render() {
-    console.log(this.state.favoritesList);
     return (
-      <div className="favorites-container">
-        <FavoritesList
-          favoritesList={this.state.favoritesList}
-          deleteFavoritesEntry={this.deleteFavoritesEntry}
-        />
-      </div>
+      <>
+        <div className="favorites-title"> 📍Bookmarked </div>
+        <div className="favorites-container">
+          <div>
+            <FavoritesList
+              favoritesList={this.state.favoritesList}
+              deleteFavoritesEntry={this.deleteFavoritesEntry}
+            />
+          </div>
+        </div>
+      </>
     );
   }
 }

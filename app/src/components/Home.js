@@ -42,7 +42,6 @@ class Home extends React.Component {
         notes: entry.notes,
       })
       .then(() => {
-        console.log('new entry submitted!');
         this.getSavedEntries();
       })
       .catch((err) => {
@@ -54,7 +53,6 @@ class Home extends React.Component {
     axios
       .delete(`http://localhost:3000/itinerary/${id}`)
       .then(() => {
-        console.log('entry deleted!');
         this.getSavedEntries();
       })
       .catch((err) => {
@@ -64,17 +62,21 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div className="home-container">
-        <div className="home-container-form">
-          <ItineraryEntryForm submitNewItinerary={this.submitNewItinerary} />
+      <>
+        <div className="home-container-title"> where to next 💭 </div>
+        <hr className="home-container-title-linebreak" />
+        <div className="home-container">
+          <div className="home-container-form">
+            <ItineraryEntryForm submitNewItinerary={this.submitNewItinerary} />
+          </div>
+          <div className="home-container-itinerary">
+            <Itinerary
+              itineraryEntries={this.state.itineraryEntries}
+              deleteItineraryEntry={this.deleteItineraryEntry}
+            />
+          </div>
         </div>
-        <div className="home-container-itinerary">
-          <Itinerary
-            itineraryEntries={this.state.itineraryEntries}
-            deleteItineraryEntry={this.deleteItineraryEntry}
-          />
-        </div>
-      </div>
+      </>
     );
   }
 }

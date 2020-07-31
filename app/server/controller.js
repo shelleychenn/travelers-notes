@@ -15,7 +15,6 @@ module.exports = {
         if (count !== 0) {
           AttractionEntry.find({ search_key: location })
             .then((data) => {
-              console.log('data found in database!');
               res.status(200).json(data);
             })
             .catch((err) => {
@@ -37,7 +36,6 @@ module.exports = {
               returnedAttractions
                 .save()
                 .then(() => {
-                  console.log('data saved!');
                   res.status(200).json(attractions);
                 })
                 .catch((err) => {
@@ -68,7 +66,6 @@ module.exports = {
             location_id: locationId,
           })
             .then((data) => {
-              console.log('data found in database!');
               res.status(200).json(data);
             })
             .catch((err) => {
@@ -92,7 +89,6 @@ module.exports = {
               returnedReviews
                 .save()
                 .then(() => {
-                  console.log('data saved!');
                   res.status(200).json(reviews);
                 })
                 .catch((err) => {
@@ -121,7 +117,6 @@ module.exports = {
     newEntry
       .save()
       .then(() => {
-        console.log('itinerary entry saved!');
         res.sendStatus(200);
       })
       .catch((err) => {
@@ -145,7 +140,6 @@ module.exports = {
     let itemId = req.params.id;
     ItineraryEntry.deleteOne({ _id: itemId })
       .then(() => {
-        console.log('entry deleted!');
         res.sendStatus(200);
       })
       .catch((err) => {
@@ -166,7 +160,6 @@ module.exports = {
     newFavoriteEntry
       .save()
       .then(() => {
-        console.log('favorite entry saved!');
         res.sendStatus(200);
       })
       .catch((err) => {
@@ -190,7 +183,6 @@ module.exports = {
     let itemId = req.params.id;
     FavoriteEntry.deleteOne({ _id: itemId })
       .then(() => {
-        console.log('favorite entry deleted!');
         res.sendStatus(200);
       })
       .catch((err) => {

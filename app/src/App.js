@@ -44,7 +44,7 @@ class App extends React.Component {
               this.changeView('home');
             }}
           >
-            Travel Planner
+            Travel Planner ✈
           </span>
           <span
             className={
@@ -76,7 +76,7 @@ class App extends React.Component {
               this.changeView('favorites');
             }}
           >
-            🔖
+            📌
           </span>
           <span
             className={
