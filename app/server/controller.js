@@ -175,7 +175,16 @@ module.exports = {
       });
   },
 
-  getAllFavorites: (req, res) => {},
+  getAllFavorites: (req, res) => {
+    FavoriteEntry.find()
+      .then((data) => {
+        res.status(200).json(data);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.sendStatus(500);
+      });
+  },
 
   deleteFavorites: (req, res) => {},
 };
