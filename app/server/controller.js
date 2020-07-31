@@ -1,9 +1,10 @@
 const axios = require('axios');
-const { API_KEY } = require('./api_key');
+// const { API_KEY } = require('./api_key');
 const AttractionEntry = require('../db/Attraction');
 const ReviewEntry = require('../db/Review');
 const ItineraryEntry = require('../db/Itinerary');
 const FavoriteEntry = require('../db/Favorite');
+const API_KEY = process.env.API_KEY;
 
 module.exports = {
   saveAndSendReturnedAttraction: (req, res) => {
