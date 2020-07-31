@@ -234,3 +234,24 @@ td {
   padding-top: 8px;
   font-size: 1.2em;
 }
+
+// styling for favorite list page
+.favorites-list-item {
+  width: 65%;
+  display: flex;
+  padding: 10px;
+  border-radius: 7px;
+  border: 1px solid #00000061;
+}
+
+.favorites-list-item-image {
+  margin: 1%;
+}
+
+.favorites-list-item-info {
+  margin: 1%;
+}
+
+.favorites-list-item-name {
+  font-weight: bold;
+}
