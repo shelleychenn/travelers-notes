@@ -3,6 +3,7 @@ const { API_KEY } = require('./api_key');
 const AttractionEntry = require('../db/Attraction');
 const ReviewEntry = require('../db/Review');
 const ItineraryEntry = require('../db/Itinerary');
+const FavoriteEntry = require('../db/Favorite');
 
 module.exports = {
   saveAndSendReturnedAttraction: (req, res) => {
@@ -152,4 +153,29 @@ module.exports = {
         res.sendStatus(500);
       });
   },
+
+  addToFavorites: (req, res) => {
+    let newFavoriteEntry = new FavoriteEntry({
+      name: req.body.name,
+      image_url: req.body.image_url,
+      location: req.body.location,
+      num_of_reviews: req.body.num_of_reviews,
+      address: req.body.address,
+    });
+
+    newFavoriteEntry
+      .save()
+      .then(() => {
+        console.log('favorite entry saved successfully!');
+        res.sendStatus(200);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.sendStatus(500);
+      });
+  },
+
+  getAllFavorites: (req, res) => {},
+
+  deleteFavorites: (req, res) => {},
 };

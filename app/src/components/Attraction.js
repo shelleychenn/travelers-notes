@@ -1,4 +1,22 @@
 import React from 'react';
+import axios from 'axios';
+
+let addToFavorites = (attraction) => {
+  axios
+    .post('http://localhost:3000/favorites', {
+      name: attraction.result_object.name,
+      image_url: attraction.result_object.photo.images.small.url,
+      location: attraction.result_object.location_string,
+      num_of_reviews: attraction.result_object.num_reviews,
+      address: attraction.result_object.address,
+    })
+    .then(() => {
+      console.log('attraction added to favorites list!');
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
 const Attraction = ({ attraction, getReviews }) => {
   let review_snippet =
@@ -35,7 +53,14 @@ const Attraction = ({ attraction, getReviews }) => {
             <div>address: {attraction.result_object.address}</div>
             <div>review: {review_snippet}</div>
           </div>
-          <div className="bookmark-attraction-button">＋</div>
+          <div
+            className="bookmark-attraction-button"
+            onClick={() => {
+              addToFavorites(attraction);
+            }}
+          >
+            ＋
+          </div>
         </div>
       </>
     );
