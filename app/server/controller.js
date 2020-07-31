@@ -37,7 +37,7 @@ module.exports = {
               returnedAttractions
                 .save()
                 .then(() => {
-                  console.log('data saved successfully!');
+                  console.log('data saved!');
                   res.status(200).json(attractions);
                 })
                 .catch((err) => {
@@ -92,7 +92,7 @@ module.exports = {
               returnedReviews
                 .save()
                 .then(() => {
-                  console.log('data saved successfully!');
+                  console.log('data saved!');
                   res.status(200).json(reviews);
                 })
                 .catch((err) => {
@@ -121,7 +121,7 @@ module.exports = {
     newEntry
       .save()
       .then(() => {
-        console.log('itinerary entry saved successfully!');
+        console.log('itinerary entry saved!');
         res.sendStatus(200);
       })
       .catch((err) => {
@@ -145,7 +145,7 @@ module.exports = {
     let itemId = req.params.id;
     ItineraryEntry.deleteOne({ _id: itemId })
       .then(() => {
-        console.log('entry successfully deleted!');
+        console.log('entry deleted!');
         res.sendStatus(200);
       })
       .catch((err) => {
@@ -166,7 +166,7 @@ module.exports = {
     newFavoriteEntry
       .save()
       .then(() => {
-        console.log('favorite entry saved successfully!');
+        console.log('favorite entry saved!');
         res.sendStatus(200);
       })
       .catch((err) => {
@@ -186,5 +186,16 @@ module.exports = {
       });
   },
 
-  deleteFavorites: (req, res) => {},
+  deleteFavorites: (req, res) => {
+    let itemId = req.params.id;
+    FavoriteEntry.deleteOne({ _id: itemId })
+      .then(() => {
+        console.log('favorite entry deleted!');
+        res.sendStatus(200);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.sendStatus(500);
+      });
+  },
 };

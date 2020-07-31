@@ -9,6 +9,7 @@ class Favorites extends React.Component {
       favoritesList: [],
     };
     this.getAllFavorites = this.getAllFavorites.bind(this);
+    this.deleteFavoritesEntry = this.deleteFavoritesEntry.bind(this);
   }
 
   componentDidMount() {
@@ -29,11 +30,26 @@ class Favorites extends React.Component {
       });
   }
 
+  deleteFavoritesEntry(id) {
+    axios
+      .delete(`http://localhost:3000/favorites/${id}`)
+      .then(() => {
+        console.log('entry deleted!');
+        this.getAllFavorites();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   render() {
     console.log(this.state.favoritesList);
     return (
       <div className="favorites-container">
-        <FavoritesList favoritesList={this.state.favoritesList} />
+        <FavoritesList
+          favoritesList={this.state.favoritesList}
+          deleteFavoritesEntry={this.deleteFavoritesEntry}
+        />
       </div>
     );
   }
