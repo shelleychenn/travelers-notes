@@ -19,6 +19,7 @@ const ItineraryEntry = ({ itineraryEntry, deleteItineraryEntry }) => {
           ✕
         </div>
       </tr>
+      <br />
     </>
   );
 };

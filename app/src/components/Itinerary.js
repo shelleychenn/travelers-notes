@@ -15,6 +15,7 @@ const Itinerary = ({ itineraryEntries, deleteItineraryEntry }) => {
             <th className="notes">Notes</th>
           </tr>
         </thead>
+        <br />
         <tbody>
           {itineraryEntries.map((itineraryEntry, index) => (
             <>
