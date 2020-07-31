@@ -23,12 +23,22 @@
   font-family: 'PT Serif', sans-serif;
 }
 
+body {
+  background: #eae7dc75;
+}
+
+.app {
+  margin-left: 1.5%;
+  margin-right: 1.5%;
+}
+
 .nav {
-  background-color: #96c8eac9;
+  background-color: #97b3c58f;
   padding: 10px;
   display: flex;
   justify-content: flex-end;
   margin-bottom: 1%;
+  padding-top: 1%;
 }
 
 .logo {
@@ -84,6 +94,13 @@
 
 .attraction-name {
   text-align: center;
+  font-weight: bold;
+  color: #00000087;
+}
+
+.attraction-description-name {
+  text-align: center;
+  font-size: 1.2em;
   font-weight: bold;
   color: #00000087;
 }
@@ -224,6 +241,7 @@ td {
 .search-bar {
   display: flex;
   justify-content: center;
+  margin-top: 1.7%;
 }
 
 .friends-container-heading {
