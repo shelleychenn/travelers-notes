@@ -1,6 +1,6 @@
-# mvp-project
+# Traveler’s Notes
 
-project-MVP
+> Full-stack application that manages travel itineraries and provides customized attraction selection based on user preferences
 
 ## Building and running on localhost
 
