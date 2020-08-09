@@ -1,4 +1,4 @@
-# Traveler’s Notes
+# traveler’s notes
 
 > Full-stack application that manages travel itineraries and provides customized attraction selection based on user preferences
 
